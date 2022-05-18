@@ -53,6 +53,7 @@ class CategoryController extends Controller {
         $category = new Category();
         $category->name = $request->input("name");
         $category->description = $request->input("description");
+        $category->active = true;
         $category->save();
 
         return redirect()->route("categorias");
@@ -60,7 +61,7 @@ class CategoryController extends Controller {
 
     public function update($id, Request $request){
 
-        $rules = [
+        $rules = [F
             "name" => "required|min:2",
             "description" => "required|min:2"
         ];
@@ -83,6 +84,7 @@ class CategoryController extends Controller {
         $category = Category::find($id);
         $category->name = $request->input("name");
         $category->description = $request->input("description");
+        $category->active = $request->input("active");
         $category->save();
 
         return redirect()->route("categorias");
