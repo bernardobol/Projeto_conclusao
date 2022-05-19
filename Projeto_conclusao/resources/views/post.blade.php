@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title', 'Formulário de Produto')
+@section('title', 'Formulário de Postagem')
 @section('content')
 <div class="row">
     <div class="col">
@@ -17,19 +17,19 @@
         </div>
         @endif    
 
-        @if($product->id)
-        <form action="{{ route('produtosupdate', ['id' => $product->id]) }}" method="POST">
+        @if($post->id)
+        <form action="{{ route('postagensupdate', ['id' => $post->id]) }}" method="POST">
             <input type="hidden" name="_method" value="PUT">
         @else
-        <form action="{{ route('produtosinsert') }}" method="POST">
+        <form action="{{ route('postagensinsert') }}" method="POST">
         @endif
             {{ csrf_field() }}
-            <input type="hidden" name="id" value="{{ $product->id }}">
+            <input type="hidden" name="id" value="{{ $post->id }}">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="name">Nome do Produto</label>
-                        <input type="text" id="name" name="name" value="{{$product->name}}" class="form-control">
+                        <label for="title">Título da Postagem</label>
+                        <input type="text" id="title" name="title" value="{{$post->title}}" class="form-control">
                         
                     </div>
                 </div>
@@ -41,81 +41,63 @@
                         <select name="category_id" id="category_id" class="form-control">
                             <option value="">Selecione</option>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}" {{ ($product->category_id == $category->id) ? 'selected' : '' }}>
-                                    {{ $category->title }} 
+                                <option value="{{ $category->id }}" {{ ($post->category_id == $category->id) ? 'selected' : '' }}>
+                                    {{ $category->name }} 
                                 </option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-12">
                     <div class="form-group">
-                        <label for="price">Preço</label>
-                            <input type="text" class="form-control" id="price" 
-                            name="price" value="{{ $product->price }}">                        
+                        <label for="summary">Resumo</label>
+                            <textarea type="text" class="form-control" id="summary" 
+                            name="summary">{{ $post->summary }}</textarea>                      
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="text" >Texto</label>
+                            <textarea type="text" class="form-control" id="text" 
+                            name="text">{{ $post->text }}</textarea>                     
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="minimum_quantity" >Quantidade mínima para compra</label>
-                            <input type="text" class="form-control" id="minimum_quantity" 
-                            name="minimum_quantity" value="{{ $product->minimum_quantity }}">                        
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <label for="active" >Ativo?</label>
+                        <label for="active" >Status</label>
                            <select name="active" id="active" class="form-control">
-                               <option value="1"{{$product->active ? 'selected' : ''}}>
-                                   Sim
+                               <option value="1"{{$post->active ? 'selected' : ''}}>
+                                   Ativo
                                 </option>
-                               <option value="0"{{ !$product->active ? 'selected' : '' }}>
-                                   Não
+                               <option value="0"{{ !$post->active ? 'selected' : '' }}>
+                                   Inativo
                                 </option>
                            </select>                      
                     </div>
                 </div>
+                
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <label for="featured" >Destaque?</label>
-                           <select name="featured" id="featured" class="form-control">
-                               <option value="1"{{$product->featured ? 'selected' : ''}}>
-                                   Sim
-                                </option>
-                               <option value="0"{{ !$product->featured ? 'selected' : '' }}>
-                                   Não
-                                </option>
-                           </select>                      
+                        <label for="post_date">Data da Postagem</label>
+                        <input type="date" class="form-control" id="post_date" 
+                            name="post_date" value="{{ $post->post_date }}">
+                        </input>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="description">Descrição</label>
-                        <textarea name="description" id="description" class="form-control">
-                            {{$product->description}}
-                        </textarea>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="instructions">Instruções</label>
-                        <textarea name="instructions" id="instructions" class="form-control">
-                            {{ $product->instruction }}
-                        </textarea>
-                    </div>
-                </div>
-                <div class="col-lg-12">
+
+                
+                <!-- <div class="col-lg-12">
                     <div class="form-group">
                         <label for="link_file">Link do Arquivo</label>
                         <input type="text" class="form-control" name="link_file" id="link_file" 
-                        value="{{ $product->link_file }}">
+                        value="{{ $post->link_file }}">
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="{{ route('produtos') }}" class="btn btn-secondary" >Cancelar</a>
+                    <a href="{{ route('postagens') }}" class="btn btn-secondary" >Cancelar</a>
                     <button type="submit" class="btn btn-success">Salvar</button>
                 </div>
             </div>

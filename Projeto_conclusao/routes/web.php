@@ -2,16 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('categorias')->group(function(){
+    Route::prefix('categorias')->group(function(){
     Route::get("", "categoryController@index")->name("categorias");
-    // Route::get("novo", "CategoryController@create")->name("categoriasnovo");
+    Route::get("novo", "CategoryController@create")->name("categoriasnovo");
     Route::get("{id}", "CategoryController@edit")->name("categoriasform");
     Route::post("", "CategoryController@store")->name("categoriasinsert");
     Route::put("{id}", "CategoryController@update")->name("categoriasupdate");
     Route::delete("{id}", "CategoryController@destroy")->name("categoriasdelete");
 });
 
-Route::prefix('postagens')->group(function(){
+    Route::prefix('postagens')->group(function(){
     Route::get("", "PostController@index")->name("postagens");
     Route::get("novo", "PostController@create")->name("postagensnovo");
     Route::get("{id}", "PostController@edit")->name("postagensform");
