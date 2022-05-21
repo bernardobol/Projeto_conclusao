@@ -2,6 +2,20 @@
 @section('title', 'Postagens')
 @section('content')
 @include('includes.menu')
+
+<style>
+    td{
+        /* width: 100px; */
+        max-width: 100px; /* add this */
+        height: 200px;
+        /* white-space: nowrap; */
+        overflow: hidden;
+    }
+
+    .botao{
+        white-space:nowrap;
+    }
+</style>
    
     <div class="row">
         <div class="col">   
@@ -13,7 +27,7 @@
                     <th>Data da postagem</th>
                     <th>Título</th>
                     <th>Resumo</th>
-                    <th>Texto</th>
+                    <!-- <th>Texto</th> -->
                     <th>Status</th>
                 </tr>
                 @foreach($posts as $post)
@@ -27,9 +41,9 @@
                         <td>{{ $post->post_date }}</td>
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->summary }}</td>
-                        <td>{{ $post->text }}</td>
+                        <!-- <td>{{ $post->text }}</td> -->
                         <td>{{ $post->active ? 'Ativo' : 'Inativo' }}</td>
-                        <td>
+                        <td class="botao">
                             <form onsubmit="return confirmDelete();" onsubmit="return confirmDelete()" action="{{ route('postagensdelete', ['id'=> $post->id]) }}" method="POST">
                                 <a href="{{ route('postagensform', ['id'=> $post->id]) }}" class="btn btn-info">Editar</a>
                                 <input type="hidden" name="_method" value="DELETE">

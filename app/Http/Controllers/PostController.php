@@ -53,7 +53,10 @@ class PostController extends Controller {
             "title.min" => "O campo título deve ter no mínimo 2 caracteres",
             "summary.required" => "O campo resumo deve ser preenchido",
             "summary.min" => "O campo resumo deve ter no mínimo 2 caracteres",
+            "text.required" => "O campo texto deve ser preenchido",
+            "text.min" => "O campo texto deve ter no mínimo 2 caracteres",
             "active.required" => "O campo ativo deve ser selecionado"
+
 
         ];
 
@@ -96,6 +99,8 @@ class PostController extends Controller {
             "title.min" => "O campo título deve ter no mínimo 2 caracteres",
             "summary.required" => "O campo resumo deve ser preenchido",
             "summary.min" => "O campo resumo deve ter no mínimo 2 caracteres",
+            "text.required" => "O campo texto deve ser preenchido",
+            "text.min" => "O campo texto deve ter no mínimo 2 caracteres",
             "active.required" => "O campo ativo deve ser selecionado"
 
         ];

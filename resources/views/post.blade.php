@@ -41,9 +41,11 @@
                         <select name="category_id" id="category_id" class="form-control">
                             <option value="">Selecione</option>
                             @foreach($categories as $category)
+                                @if($category->active == 1){
                                 <option value="{{ $category->id }}" {{ ($post->category_id == $category->id) ? 'selected' : '' }}>
                                     {{ $category->name }} 
                                 </option>
+                                }@endif
                             @endforeach
                         </select>
                     </div>
@@ -89,7 +91,7 @@
                     <div class="form-group">
                         <label for="post_date">Data da Postagem</label>
                         <input type="datetime-local" class="form-control" id="post_date" 
-                            name="post_date" value="{{ $post->post_date }}" placeholder="DD/MM/AAAA HH:MM:ss">
+                            name="post_date" value="{{ date('Y-m-d\TH:i:s', strtotime($post->post_date)) }}">
                         </input>
                     </div>
                 </div>

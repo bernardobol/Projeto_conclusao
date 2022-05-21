@@ -1,8 +1,11 @@
 @extends('layout')
 @section('title', 'Postagens')
 @section('content')
-@include('includes.menunoticias')
-
+@if(Auth::check())
+    @include('includes.menu')
+@else
+    @include('includes.menunoticias')
+@endif
 <style>
     .img{
         /* width: 800px; */
@@ -24,6 +27,8 @@
     .texto{
         font-size: 18px;
     }
+
+
 </style>
 
 @foreach($posts as $post)
@@ -52,8 +57,6 @@
                 {{ $post->text }}
                 </p>
             </div>
-
-
 
         </div>
     </div>

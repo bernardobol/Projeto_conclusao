@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/postagens';
+    protected $redirectTo = '/noticias';
 
     /**
      * Create a new controller instance.
@@ -45,6 +45,6 @@ class LoginController extends Controller
 
     public function logout() {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('noticiaslista');
     }
 }
