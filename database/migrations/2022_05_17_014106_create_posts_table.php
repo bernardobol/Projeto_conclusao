@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('category_id')->unsigned()->nullable();
             $table->dateTime('post_date');
             $table->string('title');
-            $table->string('summary');
-            $table->string('text');
+            $table->text('summary');
+            $table->text('text');
             $table->boolean('active');
             $table->string('link_file');
             $table->timestamps();

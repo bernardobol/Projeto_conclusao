@@ -19,6 +19,11 @@
                     Postagens
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('noticiaslista') }}" class="nav-link">
+                    Notícias
+                </a>
+            </li>
            
             <li class="nav-item">
                 <a href="{{ route('logout') }}" class="nav-link">

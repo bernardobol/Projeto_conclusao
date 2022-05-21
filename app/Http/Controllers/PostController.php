@@ -48,6 +48,12 @@ class PostController extends Controller {
 
         $messages = [
             "post_date.required" => "O campo data deve ser preenchido",
+            "category_id.required" => "O campo categoria deve ser preenchido",
+            "title.required" => "O campo título deve ser preenchido",
+            "title.min" => "O campo título deve ter no mínimo 2 caracteres",
+            "summary.required" => "O campo resumo deve ser preenchido",
+            "summary.min" => "O campo resumo deve ter no mínimo 2 caracteres",
+            "active.required" => "O campo ativo deve ser selecionado"
 
         ];
 
@@ -85,7 +91,12 @@ class PostController extends Controller {
 
         $messages = [
             "post_date.required" => "O campo data deve ser preenchido",
-
+            "category_id.required" => "O campo categoria deve ser preenchido",
+            "title.required" => "O campo título deve ser preenchido",
+            "title.min" => "O campo título deve ter no mínimo 2 caracteres",
+            "summary.required" => "O campo resumo deve ser preenchido",
+            "summary.min" => "O campo resumo deve ter no mínimo 2 caracteres",
+            "active.required" => "O campo ativo deve ser selecionado"
 
         ];
 

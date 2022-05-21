@@ -89,7 +89,7 @@
                     <div class="form-group">
                         <label for="post_date">Data da Postagem</label>
                         <input type="datetime-local" class="form-control" id="post_date" 
-                            name="post_date" value="{{ $post->post_date }}">
+                            name="post_date" value="{{ $post->post_date }}" placeholder="DD/MM/AAAA HH:MM:ss">
                         </input>
                     </div>
                 </div>

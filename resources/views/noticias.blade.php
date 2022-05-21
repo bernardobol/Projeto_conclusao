@@ -2,42 +2,63 @@
 @section('title', 'Postagens')
 @section('content')
 @include('includes.menunoticias')
-   
+
+<style>
+    .img{
+        /* width: 800px; */
+        height: 400px;
+    }
+
+    main.container {
+        box-shadow: 0 0 8px 3px #e4e4e4;
+    }
+
+    .tltle{
+        margin-bottom: 50px !important;
+    }
+
+    .divs{
+        height: 50px;
+    }
+
+    .texto{
+        font-size: 18px;
+    }
+</style>
+
+@foreach($posts as $post)
+<main class="container my-5 bg-white p-5">
     <div class="row">
-        <div class="col">   
-            <table class="table table-hover talbe-bordered">
-                <tr>
-                    <th>Categoria</th>
-                    <th>Data da postagem</th>
-                    <th>Título</th>
-                    <th>Resumo</th>
-                    <th>Texto</th>
-                    <th>Status</th>
-                    <th>Ações</th>
-                </tr>
-                @foreach($posts as $post)
-                    @if($post->active)
-                    <tr>
-                    @else
-                    <tr class="table-secondary">
-                    @endif
-                        <td>{{ $post->category->name }}</td>
-                        <td>{{ $post->post_date }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td>{{ $post->summary }}</td>
-                        <td>{{ $post->text }}</td>
-                        <td>{{ $post->active }}</td>
-                        <td>
-                            <form onsubmit="return confirmDelete();" onsubmit="return confirmDelete()" action="{{ route('postagensdelete', ['id'=> $post->id]) }}" method="POST">
-                                <a href="{{ route('postagensform', ['id'=> $post->id]) }}" class="btn btn-info">Editar</a>
-                                <input type="hidden" name="_method" value="DELETE">
-                                {{ csrf_field() }}
-                                <button type="submit" class="btn btn-danger">Excluir</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>    
+        <div class="col-lg-12 ">
+            <h1 >{{ $post->title }}</h1>
+            <h5>{{ $post->post_date }}</h5>
+                <div class="divs"></div>
+
+                <div >
+                    <p>
+                    {{ $post->summary }}
+                    </p>
+                </div>
+
+            <div class="d-flex justify-content-center col-lg-12 ">
+                <img class=" img img-fluid" src="{{ $post->link_file }}" alt="Imagem responsiva">
+            </div>
+
+            <div class="divs"></div>
+
+
+            <div class="texto">
+                <p>
+                {{ $post->text }}
+                </p>
+            </div>
+
+
+
         </div>
-    </div> 
+    </div>
+</main>
+
+@endforeach
+    
 @endsection
