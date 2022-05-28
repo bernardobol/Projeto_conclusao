@@ -1,7 +1,4 @@
 <nav class="mb-5 navbar navbar-expand-lg navbar-light bg-light">
-    <a href="{{ route('postagens') }}" class="navbar-brand">
-        Sistema
-    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#nbContent">
         <span class="navbar-toggler-icon"></span>
